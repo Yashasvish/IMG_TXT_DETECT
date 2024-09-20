@@ -1,0 +1,5 @@
+pillow
+sentencepiece
+transformers
+streamlit==1.1.0
+easyocr
