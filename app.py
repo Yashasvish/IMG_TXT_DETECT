@@ -16,9 +16,7 @@ def init_session_states():
   if 'init' not in st.session_state:
     st.session_state['init'] = 1
 
-      # Not required as they are already installed through requirements and also seems to cause errors
-    # os.system('pip install git+git://github.com/jaidedai/easyocr.git') 
-    # os.system('pip install git+https://github.com/huggingface/transformers.git --upgrade')
+
 
 
 
@@ -29,8 +27,6 @@ from transformers import TrOCRProcessor, VisionEncoderDecoderModel
 def text_recognition(image):
     processor = TrOCRProcessor.from_pretrained("microsoft/trocr-base-handwritten") 
     model = VisionEncoderDecoderModel.from_pretrained("microsoft/trocr-base-handwritten")
-    #processor = TrOCRProcessor.from_pretrained("microsoft/trocr-large-handwritten") 
-    #model = VisionEncoderDecoderModel.from_pretrained("microsoft/trocr-large-handwritten")
 
     pixel_values = processor(image, return_tensors="pt").pixel_values 
     generated_ids = model.generate(pixel_values)
